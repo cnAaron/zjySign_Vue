@@ -31,7 +31,45 @@
               :key="option.questionId"
             >
               <span
-                v-html="'第' + (index + 1) + '题：' + option.Content"
+                v-html="ifabcd (index) + option.Content"
+              ></span>
+            </van-tag>
+          </div>
+                    <div v-else-if="obj.questionType === 7">
+            匹配队列1：<br /><br />
+            <van-tag
+              plain
+              type="primary"
+              v-for="(option, index) in obj.questionInfo.optionList"
+              class="span-text"
+              :key="option.questionId"
+            >
+              <span
+                v-html=" (index + 1) +'：'+ option.OptionContent"
+              ></span>
+            </van-tag>
+            <br /><br />    答案：<br /><br />
+            <van-tag
+              plain
+              type="primary"
+              v-for="(option, index) in obj.answerList"
+              class="span-text"
+              :key="option.questionId"
+            >
+              <span
+                v-html=" ifabcd (index)+ option.OptionContent"
+              ></span>
+            </van-tag>
+                <br /><br />        匹配队列2：<br /><br />
+            <van-tag
+              plain
+              type="primary"
+              v-for="(option, index) in obj.answerContentList"
+              class="span-text"
+              :key="option.questionId"
+            >
+              <span
+                v-html=" ifabcd (index) +option.OptionAnswerContent"
               ></span>
             </van-tag>
           </div>
@@ -73,7 +111,6 @@ export default {
       answerArr: []
     }
   },
-
   methods: {
     questionType (type) {
       switch (type) {
@@ -81,12 +118,22 @@ export default {
           return '单选题'
         case 2:
           return '多选题'
-        case 5:
-          return '填空题(主观)'
         case 3:
           return '判断题'
+        case 4:
+          return '填空题(客观)'
+        case 5:
+          return '填空题(主观)'
         case 6:
           return '问答题'
+        case 7:
+          return '匹配题'
+        case 8:
+          return '阅读理解'
+        case 9:
+          return '完形填空'
+        case 10:
+          return '文件作答'
         default:
           return '暂不支持的题型'
       }
@@ -98,6 +145,20 @@ export default {
           return `<img src='${'https://zjy2.icve.com.cn' + capture}'/>`
         }
       )
+    },
+    ifabcd (num) {
+      switch (num) {
+        case 0:
+          return 'A：'
+        case 1:
+          return 'B：'
+        case 2:
+          return 'C：'
+        case 3:
+          return 'D：'
+        default:
+          return '未知：'
+      }
     }
   }
 }

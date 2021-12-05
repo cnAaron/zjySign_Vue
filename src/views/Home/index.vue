@@ -12,8 +12,8 @@
 </van-steps>
 <p class="text">
 邀请人免费得2积分，也就是一个月自动签到权限。<br>
-不想邀请人也可以选择钞能力，2块钱10积分 联系QQ：3403106098<br>
-本站采用前后端分离(springboot,redis)，源码包搭建包更新</p>
+不想邀请人也可以选择钞能力，2块钱10积分 ：<a href="https://www.126sh.com/details/77801D34" target="_blank"> 购买卡密地址</a><br>
+本站技术栈(springboot+vue)，源码包搭建包更新联系qq3403106098</p>
   </div>
 </template>
 
