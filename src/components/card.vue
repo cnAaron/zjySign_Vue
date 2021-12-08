@@ -38,9 +38,10 @@ export default {
     async onSubmit ({ card }) {
       this.loading = true
       try {
-        await useKey(card)
-        this.$notify({ type: 'success', message: '使用卡密成功\n积分+10' })
-        this.addintegral(10)
+        const { data: { data } } = await useKey(card)
+        this.$notify({ type: 'success', message: `使用卡密成功\n积分+${data}` })
+        this.addintegral(data)
+        this.card = ''
       } catch (error) {
         if (error.response.status === 403) {
           this.$notify({ type: 'danger', message: '卡密错误或已被使用' })
